@@ -57,6 +57,57 @@ function recorrer(arrayDatos){
 
   //Modal
  
+     
+  div3.click(function() {
+    //Estructura del modal
+    var modal = $('<div/>',{'class':'prueba', 'id': 'myModal'+ el.id });
+    var contenido = $('<div/>', {'class': 'modal-content'});
+    var spanX = $('<span/>', {'class': 'close', 'text': 'x'});
+    
+    //Contenido del modal tomado desde el array
+    var fotoModal = $('<img/>',{'src': 'img/'+ id + '.jpg'}).width('220px').height('250px');
+    var tituloModal = $('<h2/>', {'text': el.title});
+    var userModal = $('<span/>',{'text': el.user});
+    var hashModal= $('<span/>',{'text': ' #' + el.hashtag});
+    var desModal= $('<p/>', {'text': el.description});
+    var pModal=$('<p/>');
+    var iconsModal =$('<span/>');
+    var iconSubida= $('<span/>', {'class': 'material-icons', 'text' :'file_upload' });
+    var iconHecho= $('<span/>', {'class': 'material-icons', 'text' :'done' });
+    var iconMas = $('<span/>', {'class': 'material-icons', 'text' :'more_horiz' });
+    var btnGuardar= $('<a/>', {'href' : '#' ,'class': 'btnGuardar', 'text' : 'Guardar '});
+    var iconPin = $('<span/>', {'class': 'fa fa-thumb-tack' });
+    var btnLeer= $('<a/>', {'href' : '#' ,'text': 'Leer'});
+
+    iconsModal.append(iconSubida);
+    iconsModal.append(iconHecho);
+    iconsModal.append(iconMas);
+    btnGuardar.append(iconPin);
+    pModal.append(userModal);
+    pModal.append(hashModal);
+    contenido.append(spanX);
+    contenido.append(iconsModal);
+    contenido.append(btnGuardar);
+    contenido.append(tituloModal);
+    contenido.append(fotoModal);
+    contenido.append(btnLeer);
+    contenido.append(pModal);
+    contenido.append(desModal);
+    modal.append(contenido);
+
+     //Coloco todo lo del modal en mi seccion de clase modal que coloque en HTML
+    $('.modal').append(modal);
+     
+
+     //Hago que aparesca el modal al hacer click al contenido
+   $('.modal').show();
+
+     //Al hacer click en la x se desaparece el modal 
+        spanX.click(function(){
+        $('.modal').hide();    
+        $('.prueba').hide();  
+        })
+    })
   })
 }
 
