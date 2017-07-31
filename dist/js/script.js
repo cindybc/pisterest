@@ -10674,7 +10674,7 @@ function recorrer(arrayDatos){
   //Modal
  
      
-  img.click(function() {
+  div3.click(function() {
     //Estructura del modal
     var modal = $('<div/>',{'class':'prueba', 'id': 'myModal'+ el.id });
     var contenido = $('<div/>', {'class': 'modal-content'});
