@@ -53,7 +53,7 @@ nav{
     padding: 10px;
     border-bottom: 2px solid #000;
     img{
-    	border-radius: 10px;
+    	border-radius: $radius;
     }
     h2{
     	font-family: 'Lobster';
@@ -65,6 +65,10 @@ nav{
     	i{
     		margin-left: 170px;
     	}
+    }
+    .letra{
+    	@include letraInicial;
+    	font-family: 'Lobster';
     }
  
 }
@@ -89,15 +93,44 @@ nav{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
+    border-radius: $radius;
+    .material-icons{
+    	color: $colorGris;
+    	padding: 0 10px;
+    }
+    h2{
+    	font-family: 'Lobster';
+    	margin-bottom: 10px;
+    	letter-spacing: 2px;
+    }
+    img{
+    margin: 0 70px;
+    border-radius: $radius;
+    }
+    a{
+       @include botonModal;
+       background-color: #ccc9c9;
+       color: #7b7878;
+       float:none;
+    }
+    a.btnGuardar{
+    	@include botonModal;
+    }
+    .letra{
+    	@include letraInicial;
+    	font-family: 'Lobster';
+    }
+
 }
 
 /* X para cierre  de Modal */
 .close {
-    color: #aaaaaa;
+    color: #fff;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin: -90px;
 }
 
 .close:hover,

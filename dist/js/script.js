@@ -10641,6 +10641,7 @@ function recorrer(arrayDatos){
 	var icon= $('<i/>',{'class':'material-icons', 'text' :'done'});
 	var spanUser = $('<span/>');
 	var spanHash = $('<span/>',{'text': ' #'});
+    var inicial= $('<span/>',{'class': 'letra','text' : el.user[0]});
 
 	//Ocupe el numero del Id de los elementos para asi generar que me otorge tres tamaños distintos a las img.	
     if(el.id % 3 == 0){
@@ -10652,6 +10653,7 @@ function recorrer(arrayDatos){
     }
     //Le otorgo a cada etiqueta su elemento que recorri.
     spanHash.append(hash);
+    spanUser.append(inicial);
     spanUser.append(usuario);
     h2Title.append(titulo);
     pDes.append(des);
@@ -10694,11 +10696,13 @@ function recorrer(arrayDatos){
     var btnGuardar= $('<a/>', {'href' : '#' ,'class': 'btnGuardar', 'text' : 'Guardar '});
     var iconPin = $('<span/>', {'class': 'fa fa-thumb-tack' });
     var btnLeer= $('<a/>', {'href' : '#' ,'text': 'Leer'});
+    var letraInicial= $('<span/>',{'class': 'letra', 'text' : el.user[0]});
 
     iconsModal.append(iconSubida);
     iconsModal.append(iconHecho);
     iconsModal.append(iconMas);
     btnGuardar.append(iconPin);
+    pModal.append(letraInicial);
     pModal.append(userModal);
     pModal.append(hashModal);
     contenido.append(spanX);
