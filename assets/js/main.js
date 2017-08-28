@@ -30,8 +30,7 @@ function recorrer(el){
 		var usuario= el.user;
 		var hash= el.hashtag;
 
-	
-    //Se crea cada una de las etiquetas donde se guardaran los elementos que tome del Json.
+	//Se crea cada una de las etiquetas donde se guardaran los elementos que tome del Json.
 	var contInfo = $('<div/>',{'class' : 'contInfo'});
 	var contImg= $('<div/>', {'class' : 'contImg'});
 	var contTotal= $('<div/>', {'class' : 'contTotal', 'id' : 'myBtn'});
