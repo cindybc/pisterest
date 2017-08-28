@@ -8,7 +8,7 @@ $(document).ready(function(){
     porcion1.forEach(function(el){
         recorrer(el);
     }); 
-});
+}); 
 //Ocupo scroll para que cuendo llegue al final de la pagina me termine de cargar el resto de imagenes.
 $(window).scroll(function(){
     if ($(window).scrollTop() == $(document).height() - $(window).height()){
@@ -19,7 +19,7 @@ $(window).scroll(function(){
             })
         }
     }                 
-});
+});                   
 
 function recorrer(el){
 	console.log(el);
