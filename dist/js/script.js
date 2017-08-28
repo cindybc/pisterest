@@ -10614,15 +10614,32 @@ var arrayDatos= [
     "hashtag": "Colors"
   }
 ];
-$(document).ready(function(){
+//Datos globales.
+var porcion1= arrayDatos.slice(0,20);
+var porcion2= arrayDatos.slice(20,41);
+cont= 0;
 
-    recorrer(arrayDatos);
+$(document).ready(function(){
+ //Tomo la primera porcion y la recorro.
+    porcion1.forEach(function(el){
+        recorrer(el);
+    }); 
+});
+//Ocupo scroll para que cuendo llegue al final de la pagina me termine de cargar el resto de imagenes.
+$(window).scroll(function(){
+    if ($(window).scrollTop() == $(document).height() - $(window).height()){
+
+        if(cont == 20){
+            porcion2.forEach(function(el){
+                recorrer(el);
+            })
+        }
+    }                 
 });
 
-function recorrer(arrayDatos){
-	console.log(arrayDatos);
-	//Recorro el Json y tomo sus elementos.
-	arrayDatos.forEach(function(el){
+function recorrer(el){
+	console.log(el);
+	//Tomo datos del Json.
 		var id= el.id;
 		var titulo= el.title;
 		var des= el.description;
@@ -10631,9 +10648,9 @@ function recorrer(arrayDatos){
 
 	
     //Se crea cada una de las etiquetas donde se guardaran los elementos que tome del Json.
-	var div = $('<div/>',{'class' : 'div1'});
-	var div2= $('<div/>', {'class' : 'div2'});
-	var div3= $('<div/>', {'class' : 'div3', 'id' : 'myBtn'});
+	var contInfo = $('<div/>',{'class' : 'contInfo'});
+	var contImg= $('<div/>', {'class' : 'contImg'});
+	var contTotal= $('<div/>', {'class' : 'contTotal', 'id' : 'myBtn'});
     var pDes = $('<p/>');
 	var h2Title= $('<h2/>');
 	var spanImg= $('<span/>',{'text' : '6'}).css({'vertical-align': 'super'});
@@ -10645,11 +10662,11 @@ function recorrer(arrayDatos){
 
 	//Ocupe el numero del Id de los elementos para asi generar que me otorge tres tamaños distintos a las img.	
     if(el.id % 3 == 0){
-     var img= $('<img/>',{'src': 'img/'+ id + '.jpg'}).width('220px').height('350px');
+     var img= $('<img/>',{'src': 'dist/img/'+ id + '.jpg'}).width('220px').height('350px');
     }else if(el.id % 5 == 0){
- 	var img= $('<img/>',{'src': 'img/'+ id + '.jpg'}).width('220px').height('500px');
+ 	var img= $('<img/>',{'src': 'dist/img/'+ id + '.jpg'}).width('220px').height('500px');
     }else{
-	var img= $('<img/>',{'src': 'img/'+ id + '.jpg'}).width('220px').height('250px');
+	var img= $('<img/>',{'src': 'dist/img/'+ id + '.jpg'}).width('220px').height('250px');
     }
     //Le otorgo a cada etiqueta su elemento que recorri.
     spanHash.append(hash);
@@ -10658,32 +10675,33 @@ function recorrer(arrayDatos){
     h2Title.append(titulo);
     pDes.append(des);
     iconSpan.append(icon);
-    div2.append(img);
-    div2.append(iconSpan);
-    div2.append(spanImg);
-    div.append(h2Title);
-    div.append(pDes);
-    div.append(spanUser);
-    div.append(spanHash);
+    contImg.append(img);
+    contImg.append(iconSpan);
+    contImg.append(spanImg);
+    contInfo.append(h2Title);
+    contInfo.append(pDes);
+    contInfo.append(spanUser);
+    contInfo.append(spanHash);
 
-    div3.append(div2).width('220px');
-    div3.append(div).width('220px');
+    contTotal.append(contImg).width('220px');
+    contTotal.append(contInfo).width('220px');
 
     //Tomo el div que reune todos los datos y se lo otorgo a mi div declarado en el HTML a traves de un Id.
-    $('#imagenes').append(div3);
-
+    $('#imagenes').append(contTotal);
+  
+  //contador.
+    cont++;
 
   //Modal
- 
      
-  div3.click(function() {
+  contTotal.click(function() {
     //Estructura del modal
-    var modal = $('<div/>',{'class':'prueba', 'id': 'myModal'+ el.id });
+    var modal = $('<div/>',{'class':'modal', 'id': 'myModal'+ el.id });
     var contenido = $('<div/>', {'class': 'modal-content'});
-    var spanX = $('<span/>', {'class': 'close', 'text': 'x'});
+    var spanX = $('<span/>', {'class': 'close material-icons', 'text' : 'clear'});
     
     //Contenido del modal tomado desde el array
-    var fotoModal = $('<img/>',{'src': 'img/'+ id + '.jpg'}).width('220px').height('250px');
+    var fotoModal = $('<img/>',{'src': 'dist/img/'+ id + '.jpg'});
     var tituloModal = $('<h2/>', {'text': el.title});
     var userModal = $('<span/>',{'text': el.user});
     var hashModal= $('<span/>',{'text': ' #' + el.hashtag});
@@ -10716,19 +10734,24 @@ function recorrer(arrayDatos){
     modal.append(contenido);
 
      //Coloco todo lo del modal en mi seccion de clase modal que coloque en HTML
-    $('.modal').append(modal);
+        $('.cont-modal').append(modal);
      
 
      //Hago que aparesca el modal al hacer click al contenido
-   $('.modal').show();
+        $('.cont-modal').show();
 
      //Al hacer click en la x se desaparece el modal 
         spanX.click(function(){
-        $('.modal').hide();    
-        $('.prueba').hide();  
+        $('.cont-modal').hide();    
+        $('.modal').remove();  
         })
+
+        $('.cont-modal').click(function(){
+            $('.cont-modal').hide();    
+            $('.modal').remove(); 
+        })    
     })
-  })
+  
 }
 
 
