@@ -10622,7 +10622,7 @@ $(document).ready(function(){
 function recorrer(arrayDatos){
 	console.log(arrayDatos);
 	//Recorro el Json y tomo sus elementos.
-	arrayDatos.forEach(function(el){
+	arrayDatos.forEach(function(el){   
 		var id= el.id;
 		var titulo= el.title;
 		var des= el.description;
@@ -10674,7 +10674,6 @@ function recorrer(arrayDatos){
 
 
   //Modal
- 
      
   div3.click(function() {
     //Estructura del modal
