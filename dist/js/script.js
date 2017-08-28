@@ -10618,7 +10618,7 @@ var arrayDatos= [
 var porcion1= arrayDatos.slice(0,20);
 var porcion2= arrayDatos.slice(20,41);
 cont= 0;
-
+   
 $(document).ready(function(){
  //Tomo la primera porcion y la recorro.
     porcion1.forEach(function(el){
